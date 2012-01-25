@@ -20,8 +20,8 @@ Alternatively, you can simply run `make all` to run the whole analysis:
     cd soy-rtms
     make all
 
-The entire analysis can be generated from a small number of files 
-and empty directories:
+The entire analysis (1.4G total) can be generated from a small 
+number of files and empty directories (89K total):
 
     soy-rtms/
         bin/
