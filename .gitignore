@@ -1,0 +1,8 @@
+blast/
+html/
+out/
+png/
+data/*
+!data/genome
+!data/minisatellites.fa
+bin/doc2html.sh
