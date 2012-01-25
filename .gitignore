@@ -1,7 +1,10 @@
 blast/
 html/
 out/
-png/
+png/*
+!png/Gm01_histogram.png
+!png/minisatellites_identity_histogram.png
+!png/minisatellites_length_histogram.png
 data/*
 !data/genome
 !data/minisatellites.fa
