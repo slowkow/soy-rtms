@@ -437,15 +437,15 @@ with corresponding files:
 
 #### Histogram: MS Hit Length
 
-![Histograms of minisatellite BLAST hit lengths for each of the five minisatellites.](png/minisatellites_length_histogram.png)
+![Histograms of minisatellite BLAST hit lengths for each of the five minisatellites.](https://github.com/slowkow/soy-rtms/raw/master/png/minisatellites_length_histogram.png)
 
 #### Histogram: MS Percent Identity
 
-![Histograms of minisatellite BLAST hit identities for each of the five minisatellites.](png/minisatellites_identity_histogram.png)
+![Histograms of minisatellite BLAST hit identities for each of the five minisatellites.](https://github.com/slowkow/soy-rtms/raw/master/png/minisatellites_identity_histogram.png)
 
 #### Histogram: MS and TE Count per 100k nt
 
-![Histogram of minisatellite and transposable element frequency across the length of chromosome Gm01.](png/Gm01_histogram.png)
+![Histogram of minisatellite and transposable element frequency across the length of chromosome Gm01.](https://github.com/slowkow/soy-rtms/raw/master/png/Gm01_histogram.png)
 
 ## Find Putative Transposable Elements
 
