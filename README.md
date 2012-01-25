@@ -1,29 +1,27 @@
-% Computational analysis of retrotransposon-associated minisatellite DNAs in the soybean genome
-% Kamil Slowikowski
-% January 24, 2012
+# Computational analysis of retrotransposon-associated minisatellite DNAs in the soybean genome
+
+January 25, 2012
 
 # Introduction
 
-This document describes the steps required to reproduce the analysis
-in the following paper:
+This document describes the steps required to reproduce the 
+computational analysis described in the following paper:
 
 * Mogil LM, Slowikowski K, Laten HM (2011). Computational and 
   experimental analyses of retrotransposon-associated minisatellite 
-  DNAs in the soybean genome. BMC Bioinformatics.
+  DNAs in the soybean genome. BMC Bioinformatics, in press.
 
-Download the project from github: <https://github.com/slowkow/soy-rtms>
-
-You can follow along as I describe all commands, scripts and 
+You can follow along as I describe all commands, scripts, and 
 outputs. If you do follow along, make sure you `cd` to `soy-rtms` 
 before executing any of the commands.
 
-Alternatively, you can simply run `make` like so:
+Alternatively, you can simply run `make all` to run the whole analysis:
 
     cd soy-rtms
     make all
 
-Note that the entire analysis can be generated from a small number of
-files and empty directories:
+The entire analysis can be generated from a small number of files 
+and empty directories:
 
     soy-rtms/
         bin/
@@ -32,27 +30,24 @@ files and empty directories:
             count_minisatellites.pl
             count_tandems.pl
             create_histograms.r
-            doc2html.sh
             partition_genome.pl
             soytedb2gff3.pl
         blast/ (empty)
         data/
             genome
             minisatellites.fa
-        html/
         out/ (empty)
         png/ (empty)
         Makefile
-        README.txt
+        README.md
 
-All of the steps in this analysis are executed, including 
-downloading the soybean genome from NCBI and sequences and 
-annotations from SoyTEdb. By using a makefile, I can specify the 
+All of the steps detailed in the text below are executed by `make`, 
+including downloading the soybean genome from NCBI and sequences and 
+annotations from SoyTEdb. Using a makefile allows us to specify the 
 rules for creation of output files and their dependencies, so `make` 
 can automatically regenerate files after updates or deletions.
 
-Contact me at: <kslowikowski@luc.edu>. Questions and suggestions are
-welcome.
+Please contact me with questions and suggestions.
 
 ## Overview
 
@@ -82,8 +77,8 @@ Finally, MS occurrence is characterized in TEs PEs.
 
 ## Software Requirements
 
-I performed the analysis on [Ubuntu Linux][ubuntu] and have not 
-tried to run it on Mac or Windows.
+I performed the analysis on [Ubuntu] and have not tried to run it on 
+Mac or Windows.
 
 Software requirements:
 
@@ -91,13 +86,13 @@ Software requirements:
     * Pre-installed on Ubuntu.
 * [NCBI BLAST+][blast]
     * Install on Ubuntu with: `apt-get install ncbi-blast+`
-* [BEDTools][bedtools]
+* [BEDTools]
     * Install on Ubuntu with: `apt-get install bedtools`
 * [GNU Parallel][gnuparallel]
     * Install from source, rpm, or deb.
 * [The R Project for Statistical Computing][r-project]
     * Install on Ubuntu with: `apt-get install r-base-core`
-* [ggplot2][ggplot2]
+* [ggplot2]
     * Install from within an R session with: `install.packages("ggplot2")`
 
 [bedtools]: http://code.google.com/p/bedtools/
@@ -107,12 +102,6 @@ Software requirements:
 [perl]: http://www.perl.org/
 [r-project]: http://www.r-project.org/
 [ubuntu]: http://www.ubuntu.com/
-
-### Colophon
-
-This HTML page was generated with [Pandoc] using the 
-[Skeleton](http://www.getskeleton.com/) template and a background 
-from [Subtle Patterns](http://subtlepatterns.com/).
 
 ## Directory Structure
 
@@ -126,7 +115,6 @@ and generate output in `out`.
     │   ├── count_minisatellites.pl
     │   ├── count_tandems.pl
     │   ├── create_histograms.r
-    │   ├── doc2html.sh
     │   ├── partition_genome.pl
     │   └── soytedb2gff3.pl
     ├── blast
@@ -144,26 +132,6 @@ and generate output in `out`.
     │   ├── soytedb.fa.bz2
     │   ├── soytedb.gff3.bz2
     │   └── soytedb.tab.bz2
-    ├── html
-    │   ├── images
-    │   │   ├── apple-touch-icon-114x114.png
-    │   │   ├── apple-touch-icon-72x72.png
-    │   │   ├── apple-touch-icon.png
-    │   │   ├── brushed_alu.png
-    │   │   └── favicon.ico
-    │   ├── javascripts
-    │   │   ├── live.js
-    │   │   └── tabs.js
-    │   ├── png
-    │   │   ├── Gm01_histogram.png
-    │   │   ├── minisatellites_identity_histogram.png
-    │   │   └── minisatellites_length_histogram.png
-    │   ├── stylesheets
-    │   │   ├── base.css
-    │   │   ├── layout.css
-    │   │   └── skeleton.css
-    │   ├── index.html
-    │   └── pandoc-skeleton-template.html
     ├── out
     │   ├── minisatellite_counts.tab
     │   ├── minisatellites.blasttable.bz2
@@ -203,9 +171,7 @@ and generate output in `out`.
     │   ├── minisatellites_identity_histogram.png
     │   └── minisatellites_length_histogram.png
     ├── Makefile
-    └── README.txt
-    
-    10 directories, 74 files
+    └── README.md
 
 ### Detailed Description of All Files
 
@@ -236,9 +202,6 @@ file.
     * `create_histograms.r` is an R script to create the histograms 
     found in `png`.
 
-    * `doc2html.sh` invokes [Pandoc] to convert 
-    `README.txt` to HTML.
-
     * `partition_genome.pl` accepts a tab-delimited genome file with
     lengths of each chromosome and outputs BED data with equal-size
     annotations that are used as bins to create the histograms. See
@@ -265,7 +228,6 @@ file.
 
     * `soytedb.tab.bz2` contains annotations for all SoyTEdb TEs.
 
-* `html` contains the HTML version of this documentation.
 * `out` contains output files from this analysis.
 
     * `minisatellite_counts.tab` shows MS, TE, and PE counts for
@@ -320,8 +282,6 @@ file.
 
     * `minisatellites_length_histogram.png` shows BLAST hit
     lengths for MS BLAST hits against the genome.
-
-[pandoc]: http://johnmacfarlane.net/pandoc/
 
 ----
 
