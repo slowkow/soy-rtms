@@ -73,7 +73,7 @@ TE annotations. Some regions flanking these outside mappings form
 putative transposable elements that have not been reported in 
 SoyTEdb. We use BLAST to compare these unnanotated putative elements 
 to reported TEs, so we can to assign a probable TE family to each PE. 
-Finally, MS occurrence is characterized in TEs PEs.
+Finally, MS occurrence is characterized in TEs and PEs.
 
 ## Software Requirements
 
@@ -324,7 +324,7 @@ of each FASTA entry to match the chromosome names used at SoyTEdb.
 
     ids=283570573,283570572,283570571,283570570,283570569,283570568,283570567,283570566,283570565,283570564,283570563,283570562,283570561,283570560,283570559,283570558,283570557,283570556,283570555,283570554
     wget -O - "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&rettype=fasta&id=$ids" | \
-    perl -pe 'BEGIN{ $$i="01" } s/^>.*/>Gm$$i/ && $$i++' > data/soy.fa
+    perl -pe 'BEGIN{ $i="01" } s/^>.*/>Gm$i/ && $i++' > data/soy.fa
 
 Download the TE annotations and sequences with the following commands.
 
