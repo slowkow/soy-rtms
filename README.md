@@ -1,6 +1,6 @@
 # Computational analysis of retrotransposon-associated minisatellite DNAs in the soybean genome
 
-January 25, 2012
+April 11, 2012
 
 # Introduction
 
@@ -9,7 +9,8 @@ computational analysis described in the following paper:
 
 * Mogil LM, Slowikowski K, Laten HM (2011). Computational and 
   experimental analyses of retrotransposon-associated minisatellite 
-  DNAs in the soybean genome. BMC Bioinformatics, in press.
+  DNAs in the soybean genome. BMC Bioinformatics.
+  http://www.biomedcentral.com/1471-2105/13/S2/S13
 
 You can follow along as I describe all commands, scripts, and 
 outputs. If you do follow along, make sure you `cd` to `soy-rtms` 
